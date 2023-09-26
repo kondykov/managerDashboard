@@ -3,7 +3,8 @@
 <script src="{{ asset("/js/plugins/perfect-scrollbar.min.js") }}"></script>
 <script src="{{ asset("/js/plugins/smooth-scrollbar.min.js") }}"></script>
 <script src="{{ asset("/js/plugins/chartjs.min.js") }}"></script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{{-- <script>
   var ctx = document.getElementById("chart-bars").getContext("2d");
 
   new Chart(ctx, {
@@ -15,7 +16,7 @@
         tension: 0.4,
         borderWidth: 0,
         borderRadius: 4,
-        borderSkipped: false,
+        borderSkipped: true,
         backgroundColor: "rgba(255, 255, 255, .8)",
         data: [50, 20, 10, 22, 50, 10, 40],
         maxBarThickness: 6
@@ -258,8 +259,8 @@
     }
     Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
   }
-</script>
+</script> --}}
 <!-- Github buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-<script src="{{ asset("/js/material-dashboard.min.js?v=3.1.0") }}"></script>
+<script src="{{ asset("/js/material-dashboard.min.js") }}"></script>

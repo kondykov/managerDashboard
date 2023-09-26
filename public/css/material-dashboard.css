@@ -10764,7 +10764,7 @@ fieldset:disabled .btn {
 }
 
 .bg-white {
-  background-color: #fff !important;
+  /* background-color: #fff !important; */
 }
 
 .bg-dark-blue {
@@ -21578,7 +21578,7 @@ fieldset:disabled .btn {
 }
 
 .dark-version .sidenav.bg-white {
-  background: #fff !important;
+  /* background: #fff !important; */
 }
 
 .dark-version .sidenav.bg-white .navbar-nav .nav-link.active:after {

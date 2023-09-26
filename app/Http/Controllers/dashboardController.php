@@ -8,20 +8,25 @@ class dashboardController extends Controller
 {
 	public function index()
 	{
-		$theme = 'dark';
-		$theme_style = 'dark-version';
+		$theme = '';
+		$theme_style = '';
 
 		// dev
 		// $devtool = 'show';
+		$devmode = '1';
 		$devtool = '';
-		$version = 'InDev 1.0';
+		$version = 'InDev 1.0.1';
 
 		return view('main', [
 			'themes' => $theme,
 			'theme_body' => $theme_style,
 
+			'devmode' => $devmode,
 			'devtool_show' => $devtool,
 			'version' => $version,
 		]);
+	}
+	public function login()
+	{
 	}
 }
