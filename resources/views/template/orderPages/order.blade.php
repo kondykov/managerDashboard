@@ -12,7 +12,8 @@
             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created at</th>
             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last update</th>
-            <th class="text-center text-uppercase text-xxs font-weight-bolder"> <a href="{{ route('order.create') }}" class="btn btn-primary btn-sm">Create order</a> </th>
+            <th class="text-center text-uppercase text-xxs font-weight-bolder"> <a href="{{ route('order.create') }}"
+                class="btn btn-primary btn-sm">Create order</a> </th>
           </tr>
         </thead>
         @if (count($orders))
@@ -25,7 +26,9 @@
                 <td>
                   <div class="d-flex px-2 py-1">
                     <div class="d-flex flex-column justify-content-center">
-                      <h6 class="mb-0 text-xs">{{ $order->name }}</h6>
+                      <a href="{{ route('order.show', $order->id) }}">
+                        <h6 class="mb-0 text-xs">{{ $order->name }}</h6>
+                      </a>
                     </div>
                   </div>
                 </td>
