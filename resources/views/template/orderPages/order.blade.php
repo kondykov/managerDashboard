@@ -7,15 +7,15 @@
       <table class="table align-items-center mb-0">
         <thead>
           <tr>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Номер заказа</th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Заказ</th>
-            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Статус</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Дата создания</th>
-            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Дата изменения</th>
-            <th></th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">№</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Order</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Created at</th>
+            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last update</th>
+            <th class="text-center text-uppercase text-xxs font-weight-bolder"> <a href="{{ route('order.create') }}" class="btn btn-primary btn-sm">Create order</a> </th>
           </tr>
         </thead>
-        @if ($orders instanceof Illuminate\Database\Eloquent\Collection)
+        @if (count($orders))
           @foreach ($orders as $order)
             <tbody>
               <tr>
@@ -31,33 +31,38 @@
                 </td>
                 <td>
                   <p class="text-xs font-weight-bold mb-0"></p>
-                  @if ($order->status == 'success')
+                  @if ($order->status == 'confirmed')
                     <span class="badge bg-gradient-success align-middle text-center">{{ $order->status }}</span>
                   @elseif($order->status == 'canceled')
                     <span class="badge bg-gradient-danger align-middle text-center">{{ $order->status }}</span>
                   @elseif($order->status == 'completed')
                     <span class="badge bg-gradient-primary align-middle text-center">{{ $order->status }}</span>
-                  @elseif($order->status == 'waiting')
+                  @elseif($order->status == 'unconfirmed')
                     <span class="badge bg-gradient-warning align-middle text-center">{{ $order->status }}</span>
                   @else
-                  <span class="badge bg-gradient-secondary align-middle text-center">{{ $order->status }}</span>
+                    <span class="badge bg-gradient-secondary align-middle text-center">{{ $order->status }}</span>
                   @endif
                 </td>
                 <td class="align-middle text-center text-sm">
-                  <span class="text-secondary text-xs font-weight-normals">{{ $order->created_at->format('d.m.Y') }}</span>
+                  <span
+                    class="text-secondary text-xs font-weight-normals">{{ $order->created_at->format('d.m.Y') }}</span>
                 </td>
                 <td class="align-middle text-center">
                   <span class="text-secondary text-xs font-weight-normal">{{ $order->updated_at->format('d.m.Y') }}</span>
                 </td>
                 <td class="align-middle text-center align-items-center">
-                  <a href="{{ route('order.edit', $order->id) }}" class="btn btn-info btn-sm">Edit order</a>
+                  @if ($order->status !== 'completed')
+                    <a href="{{ route('order.edit', $order->id) }}" class="btn btn-info btn-sm">Edit order</a>
+                  @endif
+                  @if ($order->status == 'completed')
+                    <span class="badge bg-gradient-danger align-middle text-center"> Order closed </span>
+                  @endif
                 </td>
               </tr>
 
 
             </tbody>
             {{-- {!! $orders->links() !!} --}}
-
           @endforeach
         @else
           <tbody>

@@ -9,6 +9,7 @@
          <label class="form-label">Name</label>
          <input type="text" name="name" class="form-control">
        </div>
+       
        <button type="submit" class="btn btn-primary">Create order</button>
       </form>
     </div>

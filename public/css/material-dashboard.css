@@ -20513,7 +20513,7 @@ fieldset:disabled .btn {
 }
 
 .btn {
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   letter-spacing: 0;
   text-transform: uppercase;
   background-size: 150%;
