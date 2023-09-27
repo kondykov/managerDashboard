@@ -67,7 +67,8 @@ class OrderController extends Controller
 
     $date = date_parse($order->created_at);
     if ($order->created_at < Carbon::now()->subMinutes(1)) {
-      if($date > '12'){
+      // dd($date, (($date['hour']) > 12));
+      if($date['hour'] > 12){
         if($order->status !== 'confirmed') {
           $errors = [
             'The order must be confirmed before closing it!'
