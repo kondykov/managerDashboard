@@ -8,7 +8,7 @@ services:
       # - ./_docker/nginx/conf.d:/etc/nginx/conf.d
       - ./_docker/nginx/:/etc/nginx/conf.d
     ports:
-      - 8080:80
+      - 8876:80
     depends_on:
       - app
     container_name: project_nginx
@@ -24,7 +24,7 @@ services:
     container_name: project_app
 
   db:
-    image: mysql:8.0
+    image: mysql:5.7
     restart: always
     volumes:
       - ./tmp/db:/var/lib/mysql
