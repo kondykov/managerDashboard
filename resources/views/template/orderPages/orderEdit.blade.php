@@ -11,7 +11,9 @@
   @endif
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('order.put', $order) }}">
+      <form action="{{ route('order.put', $order) }}" method="post">
+          @csrf
+          @method('put')
         <div class="input-group input-group-outline my-3">
           <input type="text" name="name" class="form-control" value="{{ $order->name }}">
         </div>

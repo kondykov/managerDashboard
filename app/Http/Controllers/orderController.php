@@ -8,12 +8,12 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-class OrderController extends Controller
+class orderController extends Controller
 {
   public function index()
   {
     $orders = order::all();
-    // dd($orders);                                                                                
+    // dd($orders);
     return view('template.orderPages.order', [
       'orders' => $orders,
     ]);
