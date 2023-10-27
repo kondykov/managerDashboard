@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class dashboardController extends Controller
 {
-	public function index()
+	public function __invoke()
 	{
 		$theme = '';
 		$theme_style = '';
@@ -25,8 +25,5 @@ class dashboardController extends Controller
 			'devtool_show' => $devtool,
 			'version' => $version,
 		]);
-	}
-	public function login()
-	{
 	}
 }

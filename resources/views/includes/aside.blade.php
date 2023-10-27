@@ -23,12 +23,21 @@ border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark ps "
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-white {{ request()->is('orderlist') ? 'active bg-gradient-primary' : '' }} "
+        <a class="nav-link text-white {{ request()->is('orderlist*') ? 'active bg-gradient-primary' : '' }} "
           href="{{ route('order.index') }}">
           <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
             <i class="material-icons opacity-10">list</i>
           </div>
           <span class="nav-link-text ms-1">Order list</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white {{ request()->is('schedule*') ? 'active bg-gradient-primary' : '' }} "
+          href="{{ route('schedule.index') }}">
+          <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="material-icons opacity-10">schedule</i>
+          </div>
+          <span class="nav-link-text ms-1">Schedule</span>
         </a>
       </li>
     </ul>

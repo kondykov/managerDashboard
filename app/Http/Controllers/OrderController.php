@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\order;
 use App\Http\Controllers\dashboardController;
 use Carbon\Carbon;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,7 +14,6 @@ class OrderController extends Controller
   public function index()
   {
     $orders = order::all();
-    // dd($orders);                                                                                
     return view('template.orderPages.order', [
       'orders' => $orders,
     ]);
@@ -45,6 +45,7 @@ class OrderController extends Controller
   }
   public function put(Request $request, $order)
   {
+      /** @var TYPE_NAME $order */
     $order = order::find($order);
     $order->name = $request->input('name');
     $order->status = 'unconfirmed';
@@ -60,10 +61,11 @@ class OrderController extends Controller
     $order->save();
     return redirect()->route('order.index');
   }
-  public function complete($order)
+
+    public function complete($order)
   {
 
-    $order = order::find($order);
+      $order = order::find($order);
 
     $date = date_parse($order->created_at);
     if ($order->created_at < Carbon::now()->subMinutes(1)) {

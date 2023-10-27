@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\scheduleController;
 use Illuminate\Support\Facades\Route;
 
 route::middleware('guest')->group(function(){
-  route::get('/', [dashboardController::class, 'index'])->name('dashboard');
+  route::get('/', dashboardController::class)->name('dashboard');
   route::prefix('/orderlist')->group(function(){
     route::get('/', [orderController::class, 'index'])->name('order.index');
     route::get('/create', [orderController::class, 'create'])->name('order.create');
@@ -15,6 +16,9 @@ route::middleware('guest')->group(function(){
     route::get('/{order}/sub', [orderController::class, 'put'])->name('order.put');
     route::get('/{order}/commit', [orderController::class, 'commit'])->name('order.commit');
     route::get('/{order}/completing', [orderController::class, 'complete'])->name('order.complete');
+  });
+  route::prefix('/schedule')->name('schedule.')->group(function(){
+    route::get('/', [scheduleController::class, 'index'])->name('index');
   });
 });
 // middleware — auth
