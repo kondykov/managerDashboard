@@ -26,7 +26,10 @@
       </div>
       <div class="btn-group" role="group" aria-label="Простой пример">
         @if ($order->status !== 'completed')
-          <a href="{{ route('order.edit', $order) }}" class="btn btn-info">Edit order</a>
+        <form action="{{ route('order.edit', $order) }}">
+            <a href="{{ route('order.edit', $order) }}" class="btn btn-info" method="post">Edit order</a>
+            @method('PUT')
+        </form>
         @endif
         <a href="{{ route('order.index') }}" class="btn btn-primary">Back to orders</a>
       </div>

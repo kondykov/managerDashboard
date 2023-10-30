@@ -36,7 +36,9 @@
         </div>
         <div class="btn-group" role="group" aria-label="Простой пример">
           @if ($order->status === 'unconfirmed')
-            <a href="{{ route('order.commit', $order) }}" class="btn btn-primary">Confirm order</a>
+            <form action="{{ route('order.commit', $order) }}" method="POST">
+              <button class="btn btn-primary">Confirm order</button>
+            </form>
           @endif
           <button type="submit" class="btn btn-primary">Save order</button>
           <a href="{{ route('order.complete', $order) }}" class="btn btn-primary">Close order</a>

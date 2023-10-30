@@ -11,10 +11,11 @@ route::middleware('guest')->group(function(){
   route::post('/orderlist/store', [orderController::class, 'store'])->name('order.store');
   route::get('/orderlist/{order}', [orderController::class, 'show'])->name('order.show');
   route::get('/orderlist/{order}/edit', [orderController::class, 'edit'])->name('order.edit');
-  route::get('/orderlist/{order}/sub', [orderController::class, 'put'])->name('order.put');
+  route::put('/orderlist/{order}/sub', [orderController::class, 'put'])->name('order.put');
   route::put('/orderlist/{order}/commit', [orderController::class, 'commit'])->name('order.commit');
   route::put('/orderlist/{order}/completing', [orderController::class, 'complete'])->name('order.complete');
 
+//   route::post('/orderlist/delete', [orderController::class, 'delete'])->name('order.delete'); // delete all items from db
 });
 // middleware — auth
 route::middleware('guest')->group(function(){
