@@ -11,7 +11,9 @@
   @endif
   <div class="card">
     <div class="card-body">
-      <form action="{{ route('order.put', $order) }}">
+      <form action="{{ route('order.put', $order) }}" method="post">
+          @csrf
+          @method('put')
         <div class="input-group input-group-outline my-3">
           <input type="text" name="name" class="form-control" value="{{ $order->name }}">
         </div>
@@ -34,7 +36,9 @@
         </div>
         <div class="btn-group" role="group" aria-label="Простой пример">
           @if ($order->status === 'unconfirmed')
-            <a href="{{ route('order.commit', $order) }}" class="btn btn-primary">Confirm order</a>
+            <form action="{{ route('order.commit', $order) }}" method="POST">
+              <button class="btn btn-primary">Confirm order</button>
+            </form>
           @endif
           <button type="submit" class="btn btn-primary">Save order</button>
           <a href="{{ route('order.complete', $order) }}" class="btn btn-primary">Close order</a>
