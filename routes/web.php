@@ -14,14 +14,7 @@ route::middleware('guest')->group(function(){
   route::put('/orderlist/{order}/sub', [orderController::class, 'put'])->name('order.put');
   route::put('/orderlist/{order}/commit', [orderController::class, 'commit'])->name('order.commit');
   route::put('/orderlist/{order}/completing', [orderController::class, 'complete'])->name('order.complete');
-
-//   route::post('/orderlist/delete', [orderController::class, 'delete'])->name('order.delete'); // delete all items from db
 });
 // middleware — auth
-route::middleware('guest')->group(function(){
-  // route::get('/', [dashboardController::class, 'index'])->name('dashboard');
-
-  // route::get('/', [orderController::class, 'create'])->name('order.create');
-  // route::get('/test', [dashboardController::class, 'indexTwo'])->name('dashboard2');
-});
+route::middleware('guest')->group(function(){  });
 

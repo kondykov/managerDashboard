@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\order;
-// use App\Http\Controllers\dashboardController;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -98,13 +97,8 @@ class orderController extends Controller
       ]);
     }
   }
-
   public function delete()
   {
-    dd('test');
-    // $orders = order::all()->delete();
-
-
     return redirect()->route('order.index');
   }
 }

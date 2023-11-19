@@ -23,3 +23,11 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin
 
 WORKDIR /var/www
+
+ARG LOCAL_USER=www-data
+
+RUN adduser --disabled-password --gecos '' $LOCAL_USER || true
+
+RUN chown -R $LOCAL_USER:$LOCAL_USER /var/www
+
+USER $LOCAL_USER
